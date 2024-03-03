@@ -1,7 +1,6 @@
 const convert = require("./convert");
 
-let html1 =
-  "<div class='user-content'><p>First paragraph</p><p>Need to <i>check</i> where <strong>ownership</strong> <br /><br>of <strike>this</strike> landed in the <a href='https://snyk.io'>new org</a> structure</p></div>";
+let html1 = `<div class="user-content"><p>First paragraph</p><p>Need to <i>check</i> where <strong>ownership</strong> <br /><br>of <strike>this</strike> landed in the <a href="https://snyk.io">new org</a> structure</p></div>`;
 
 let html2 = `<div class="user-content"><p>Testing Slack integration, ignore this comment...</p><h1>Heading 1</h1><h2>Heading 2</h2><h3>Heading 3</h3><h4>Heading 4</h4><h5>Heading 5</h5><h6>Heading 6</h6><hr><p>Paragraph with <b>bold</b>, <i>italic</i> and <u>underline</u>. </p><p>Paragraph with <del>strikethrough</del>, <code>code</code> and <span style="color:#64b80a;">font color</span>.</p><p>Also a <a href="https://snyk.io">link</a>.</p><blockquote>Blockquote</blockquote><pre><code>Preformatted code block</code></pre><p>Bulleted lists</p><ul>
 <li><p>First bullet</p></li>
