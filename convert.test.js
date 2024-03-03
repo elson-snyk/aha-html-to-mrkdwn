@@ -58,7 +58,11 @@ test("unordered and ordered list elements should be stripped", () => {
 
 test("list items should be prefixed with bullet symbols", () => {
   expect(convert.mrkdwn("<li>foo</li>")).toBe('"• foo"');
-  // expect(convert.mrkdwn("<li><p>foo</p></li>")).toBe('"• foo"');
+  expect(convert.mrkdwn("<li>foo</li><li>bar</li>")).toBe('"• foo\\n• bar"');
+  expect(convert.mrkdwn("<li><p>foo</p></li>")).toBe('"• foo"');
+  expect(convert.mrkdwn("<li><p>foo</p></li><li><p>bar</p></li>")).toBe(
+    '"• foo\\n• bar"'
+  );
 });
 
 // breaks
