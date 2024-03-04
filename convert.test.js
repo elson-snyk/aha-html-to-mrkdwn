@@ -26,15 +26,19 @@ test("headingsshould be wrapped in asterix", () => {
   expect(convert.mrkdwn("<h6>foo</h6>")).toBe('"*foo*"');
 });
 
-// strong and emphasis
-test("strong and em should be wrapped in asterix", () => {
+// strong
+test("strong and b should be wrapped in asterix", () => {
   expect(convert.mrkdwn("<strong>foo</strong>")).toBe('"*foo*"');
   expect(convert.mrkdwn("<b>foo</b>")).toBe('"*foo*"');
-  expect(convert.mrkdwn("<em>foo</em>")).toBe('"*foo*"');
-  expect(convert.mrkdwn("<i>foo</i>")).toBe('"*foo*"');
 });
 
-// strong and emphasis
+// emphasis
+test("em and i should be wrapped in underscore", () => {
+  expect(convert.mrkdwn("<em>foo</em>")).toBe('"_foo_"');
+  expect(convert.mrkdwn("<i>foo</i>")).toBe('"_foo_"');
+});
+
+// strike
 test("strike should be wrapped in tilde", () => {
   expect(convert.mrkdwn("<strike>foo</strike>")).toBe('"~foo~"');
   expect(convert.mrkdwn("<del>foo</del>")).toBe('"~foo~"');

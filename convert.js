@@ -17,7 +17,7 @@ const rules = {
   },
   emphasis: {
     tags: ["em", "i"],
-    filter: "*$3*",
+    filter: "_$3_",
   },
   strike: {
     tags: ["del", "strike"],
