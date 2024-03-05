@@ -10,4 +10,8 @@ let html2 = `<div class="user-content"><p>Testing Slack integration, ignore this
 <li><p>Second item</p></li>
 </ol><p><small>Created in Jira by Matt Rogers (matt.rogers@snyk.io)</small></p><p><img width="600" height="371" src="https://snyk.aha.io/attachments/7321716574533077379/token/68c12a5ef9ef42cd1ef69acf6f2d87d6a4823d64d6ac998676a4b389eff079db.download?size=original"></p></div>`;
 
+let html3 = `<div><div></div><div class="user-content"><p>Are there more details on the use case that customers are asking for so that we can ensure its linked to the right feature card?<br><br>cc <span data-linked-element-type="User">@Steve Winton</span> </p></div></div>`;
+
+console.log(convert.mrkdwn(html1));
 console.log(convert.mrkdwn(html2));
+console.log(convert.mrkdwn(html3));

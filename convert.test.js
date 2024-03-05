@@ -104,7 +104,23 @@ test("other elements should be stripped", () => {
   expect(convert.mrkdwn("<nonsense />")).toBe('""');
   expect(convert.mrkdwn("<nonsense></nonsense>")).toBe('""');
   expect(convert.mrkdwn("<div>foo</div>")).toBe('"foo"');
-  expect(convert.mrkdwn("<div><div>foo</div></div>")).toBe('"foo"');
   expect(convert.mrkdwn('<div class="user-content">foo</div>')).toBe('"foo"');
   expect(convert.mrkdwn("<div><strong>foo</strong></div>")).toBe('"*foo*"');
+  expect(
+    convert.mrkdwn(
+      '<div><div><span data-linked-element-type="User">@Steve Winton</span></div></div>'
+    )
+  ).toBe('"@Steve Winton"');
+});
+
+// deeply nested elements
+test("deeply nested elements should be handled", () => {
+  expect(convert.mrkdwn("<div><div>foo</div></div>")).toBe('"foo"');
+  expect(convert.mrkdwn("<div><div><div>foo</div></div></div>")).toBe('"foo"');
+  expect(
+    convert.mrkdwn("<div><div><div><div>foo</div></div></div></div>")
+  ).toBe('"foo"');
+  expect(
+    convert.mrkdwn("<div><div><div><strong>foo</strong></div></div></div>")
+  ).toBe('"*foo*"');
 });

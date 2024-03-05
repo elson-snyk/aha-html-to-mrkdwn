@@ -1,8 +1,4 @@
 const rules = {
-  div: {
-    tags: ["div"],
-    filter: "$3",
-  },
   paragraph: {
     tags: ["p"],
     filter: "\n$3\n",
@@ -80,13 +76,17 @@ function applyRule(rule, html) {
   return result;
 }
 
-function genericTagFilter(html, tag, filter) {
+function genericTagRegex(tag) {
   // Regex based on https://gist.github.com/gavin-asay/6cd089ca72b9810957254ec6a0cfced7
   // Capture groups: 1) tag name, 2) attributes, 3) tag contents
-  let pattern = new RegExp(
-    "<(" + tag + ")(\\s[^>]+)*(?:>(.*?)</\\1>|\\s?/>)",
+  return new RegExp(
+    "<(" + tag + ")(\\s[^>]+)*(?:>(.*?)</\\1>|\\s?/?>)",
     "gims"
   );
+}
+
+function genericTagFilter(html, tag, filter) {
+  let pattern = genericTagRegex(tag);
   return html.replace(pattern, filter);
 }
 
@@ -98,12 +98,19 @@ function postProcess(output) {
 }
 
 function mrkdwn(html) {
-  let result = html;
-  Object.keys(rules).forEach((rule) => {
-    result = applyRule(rule, result);
-  });
-
-  return postProcess(result);
+  // the basic regex approach used here can miss deeply nested elements
+  // so we call the rules recusrively while any elements remain
+  while (genericTagRegex("\\w+").test(html)) {
+    Object.keys(rules).forEach((rule) => {
+      html = applyRule(rule, html);
+    });
+  }
+  return postProcess(html);
 }
+
+// output = {
+//   text: mrkdwn(inputData.html),
+//   image: "",
+// };
 
 exports.mrkdwn = mrkdwn;
