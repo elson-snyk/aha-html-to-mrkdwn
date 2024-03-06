@@ -90,6 +90,13 @@ function genericTagFilter(html, tag, filter) {
   return html.replace(pattern, filter);
 }
 
+function firstImageUrl(html) {
+  let image = html.match(/<img\s[^>]*src="(.*?)"/i);
+  let url = image && image.length > 1 ? image[1] : "";
+
+  return url;
+}
+
 function postProcess(output) {
   output = output.replace(/•\s\n(.*?)\n\n/g, "• $1\n"); // clean up list items with nested paragraphs
   output = output.trim();
@@ -98,14 +105,18 @@ function postProcess(output) {
 }
 
 function mrkdwn(html) {
+  let image = firstImageUrl(html);
   // the basic regex approach used here can miss deeply nested elements
-  // so we call the rules recusrively while any elements remain
-  while (genericTagRegex("\\w+").test(html)) {
+  // so we call the rules recursively while any elements remain
+  let text = html;
+  while (genericTagRegex("\\w+").test(text)) {
     Object.keys(rules).forEach((rule) => {
-      html = applyRule(rule, html);
+      text = applyRule(rule, text);
     });
   }
-  return postProcess(html);
+  text = postProcess(text);
+
+  return { text, image };
 }
 
 // output = {

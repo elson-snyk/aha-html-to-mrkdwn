@@ -12,6 +12,9 @@ let html2 = `<div class="user-content"><p>Testing Slack integration, ignore this
 
 let html3 = `<div><div></div><div class="user-content"><p>Are there more details on the use case that customers are asking for so that we can ensure its linked to the right feature card?<br><br>cc <span data-linked-element-type="User">@Steve Winton</span> </p></div></div>`;
 
-console.log(convert.mrkdwn(html1));
-console.log(convert.mrkdwn(html2));
-console.log(convert.mrkdwn(html3));
+let html4 = `<div class='user-content'><p>This is already achievable using CLI parameters:</p><p><img width="1222" height="453" src="https://snyk.aha.io/attachments/7343250026469379711/token/872463676fd92f298a6544d16e2f385c463d98377175a95449ccc04851b1727e.download?size=original"></p></div>`;
+
+// console.log(convert.mrkdwn(html1));
+// console.log(convert.mrkdwn(html2));
+// console.log(convert.mrkdwn(html3));
+console.log(convert.mrkdwn(html4));
