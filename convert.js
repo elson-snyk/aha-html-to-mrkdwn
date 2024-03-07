@@ -106,9 +106,9 @@ function postProcess(output) {
 
 function mrkdwn(html) {
   let image = firstImageUrl(html);
+  let text = html;
   // the basic regex approach used here can miss deeply nested elements
   // so we call the rules recursively while any elements remain
-  let text = html;
   while (genericTagRegex("\\w+").test(text)) {
     Object.keys(rules).forEach((rule) => {
       text = applyRule(rule, text);
