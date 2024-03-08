@@ -5,6 +5,15 @@ test("empty html string should be empty mrkdwn string", () => {
   expect(convert.mrkdwn("").text).toBe('""');
 });
 
+// empty results
+test("empty elements should be omitted", () => {
+  expect(convert.mrkdwn("<b></b>").text).toBe('""');
+  expect(convert.mrkdwn("<b> </b>").text).toBe('""');
+  expect(convert.mrkdwn("<b>  </b>").text).toBe('""');
+  expect(convert.mrkdwn("<b>\n</b>").text).toBe('""');
+  expect(convert.mrkdwn(" <b></b> ").text).toBe('""');
+});
+
 // whitespace
 test("leading and trailing whitespace should be trimmed", () => {
   expect(convert.mrkdwn(" \n foo \n ").text).toBe('"foo"');

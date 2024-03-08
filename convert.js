@@ -1,4 +1,11 @@
 const rules = {
+  // empty elements need to be stripped first
+  _empty: {
+    tags: ["\\w+"],
+    filter: function (html) {
+      return html.replace(emptyTagRegex(), "");
+    },
+  },
   paragraph: {
     tags: ["p"],
     filter: "\n$3\n",
@@ -74,6 +81,10 @@ function applyRule(rule, html) {
     }
   });
   return result;
+}
+
+function emptyTagRegex() {
+  return new RegExp("<(\\w+)(\\s[^>]+)*?>\\s*?</\\1>", "gims");
 }
 
 function genericTagRegex(tag) {
