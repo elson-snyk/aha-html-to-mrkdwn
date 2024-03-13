@@ -130,9 +130,6 @@ function mrkdwn(html) {
   return { text, image };
 }
 
-// output = {
-//   text: mrkdwn(inputData.html),
-//   image: "",
-// };
+// output = mrkdwn(inputData.html);
 
 exports.mrkdwn = mrkdwn;
