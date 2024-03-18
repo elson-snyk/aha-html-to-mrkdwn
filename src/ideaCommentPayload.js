@@ -20,6 +20,7 @@ const inputData = {
   auditableType: "comment",
   auditableID: "7343250073705986848",
   auditCreatedAt: "2024-03-06T14:00:41.193Z",
+  emoji: ":speech_balloon:",
 };
 
 // JSON payload
@@ -31,7 +32,7 @@ let _payload = {
       type: "section",
       text: {
         type: "mrkdwn",
-        text: `<@${inputData.commenterSlackID}> commented on Idea <${inputData.ideaURL}|${inputData.ideaReferenceNum}>`,
+        text: `${inputData.emoji} <@${inputData.commenterSlackID}> commented on Idea <${inputData.ideaURL}|${inputData.ideaReferenceNum}>`,
       },
     },
     {
