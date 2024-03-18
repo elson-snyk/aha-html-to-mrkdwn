@@ -9,7 +9,7 @@ const inputData = {
   featureReleaseReferenceNum: "ENGINE-R-5",
   creatorSlackID: "alida.sefada@snyk.io",
   assigneeSlackID: "alida.sefada@snyk.io",
-  commentMrkdwn: '"This is already achievable using CLI parameters:"',
+  commentMrkdwn: "This is already achievable using CLI parameters:",
   commentImage:
     "https://snyk.aha.io/attachments/7343250026469379711/token/872463676fd92f298a6544d16e2f385c463d98377175a95449ccc04851b1727e.download?size=original",
   commenterSlackProfileImageURL:
@@ -88,7 +88,7 @@ let _payload = {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: JSON.parse(inputData.commentMrkdwn),
+            text: inputData.commentMrkdwn,
           },
         },
         {

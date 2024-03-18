@@ -112,7 +112,7 @@ function postProcess(output) {
   output = output.replace(/•\s\n(.*?)\n\n/g, "• $1\n"); // clean up list items with nested paragraphs
   output = output.trim();
 
-  return JSON.stringify(output);
+  return JSON.parse(JSON.stringify(output));
 }
 
 function mrkdwn(html) {

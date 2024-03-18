@@ -10,7 +10,7 @@ const inputData = {
   ideaVotes: "4",
   creatorSlackID: "alida.sefada@snyk.io",
   assigneeSlackID: "alida.sefada@snyk.io",
-  commentMrkdwn: '"This is already achievable using CLI parameters. \\nSee:"',
+  commentMrkdwn: "This is already achievable using CLI parameters. \nSee:",
   commentImage:
     "https://snyk.aha.io/attachments/7343250026469379711/token/872463676fd92f298a6544d16e2f385c463d98377175a95449ccc04851b1727e.download?size=original",
   commenterSlackProfileImageURL:
@@ -88,8 +88,7 @@ let _payload = {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: JSON.parse(inputData.commentMrkdwn),
-            // text: JSONinputData.commentMrkdwn.slice(1, -1),
+            text: inputData.commentMrkdwn,
           },
         },
         {
