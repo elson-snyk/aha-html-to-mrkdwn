@@ -59,7 +59,7 @@ const rules = {
     tags: ["a"],
     filter: function (html) {
       return html.replace(
-        /<a href=(?:"|')(.*?)(?:"|').*>(.*?)<\/a>/gi,
+        /<a href=(?:"|')(.*?)(?:"|').*?>(.*?)<\/a>/gi,
         "<$1|$2>"
       );
     },

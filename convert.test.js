@@ -106,6 +106,11 @@ test("links should become mrkdwn links", () => {
     convert.mrkdwn('<a href="https://www.bar.com/" target="_blank">foo</a>')
       .text
   ).toBe("<https://www.bar.com/|foo>");
+  expect(
+    convert.mrkdwn(
+      '<a href="https://www.foo.com/">foo</a> and <a href="https://www.bar.com/">bar</a>'
+    ).text
+  ).toBe("<https://www.foo.com/|foo> and <https://www.bar.com/|bar>");
 });
 
 // other elements should be stripped

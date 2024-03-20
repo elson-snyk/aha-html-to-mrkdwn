@@ -19,9 +19,11 @@ let examples = [
   `<div class='user-content'><p>Is this feature still relevant/needed? We have the same one in our board for the issues team - <a href="https://snyk.aha.io/features/ONBOARDINT-37?reference-class=Feature" data-mce-href="https://snyk.aha.io/features/ONBOARDINT-37?reference-class=Feature" data-linked-element-type="Feature" data-visible-fields="icon,ref"><i class="fa-solid fa-grid-2 fa-fw aha-reference-icon"></i> ONBOARDINT-37</a></p></div>`,
   // 5
   `<div><div></div><div class="user-content"><p>Specific examples of the pain from Pearson</p><ol><li style="font-size:13px;"><p><span style="font-size:13px;">There was a recent event, pushing the results with severity threshold, some were ignored as severity thresholds only includes High) Raised a support ticket. The Team found it difficult to troubleshoot, as we were not keeping all the attempts</span></p></li></ol><p><span style="font-size:13px;">2. Code Analysis - raising concerns in the project teams, when they do 7 builds a week, they would like to see all 7 for review.</span></p></div></div>`,
+  // 6
+  `<div class='user-content'><p><a href="https://snyk.aha.io/users/7247123586814665774" data-mce-href="https://snyk.aha.io/users/7247123586814665774" data-linked-element-type="User">@Phil Wise</a> the reason I was asking is because the only CN (which was promited to this feature) is <a href="https://snyk.aha.io/ideas/ideas/CN-I-9719?reference-class=Ideas%3A%3AIdea" data-mce-href="https://snyk.aha.io/ideas/ideas/CN-I-9719?reference-class=Ideas%3A%3AIdea" data-linked-element-type="Ideas::Idea" data-visible-fields="icon,ref"><i class="fa-solid fa-lightbulb aha-reference-icon"></i> CN-I-9719</a>, and it is labelled JS to UCT. It may be clearer to define the JS to UCT epic and the features within (if that is even possible?)</p></div>`,
 ];
 
 // console.log(convert.mrkdwn(html1));
 // console.log(convert.mrkdwn(html2));
 // console.log(convert.mrkdwn(html3));
-console.log(convert.mrkdwn(examples[4]));
+console.log(convert.mrkdwn(examples[6]));
