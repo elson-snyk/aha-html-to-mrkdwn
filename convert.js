@@ -115,7 +115,7 @@ function postProcess(output) {
   return JSON.parse(JSON.stringify(output));
 }
 
-function mrkdwn(html) {
+export function mrkdwn(html) {
   let image = firstImageUrl(html);
   let text = html;
   // the basic regex approach used here can miss deeply nested elements
@@ -129,7 +129,3 @@ function mrkdwn(html) {
 
   return { text, image };
 }
-
-// output = mrkdwn(inputData.html);
-
-exports.mrkdwn = mrkdwn;
