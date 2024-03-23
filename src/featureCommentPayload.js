@@ -1,3 +1,5 @@
+import { mrkdwn } from "../convert";
+
 // fixture data
 const inputData = {
   slackChannel: "C06MH3Y4SFM",
@@ -9,9 +11,7 @@ const inputData = {
   featureReleaseReferenceNum: "ENGINE-R-5",
   creatorSlackID: "alida.sefada@snyk.io",
   assigneeSlackID: "alida.sefada@snyk.io",
-  commentMrkdwn: "This is already achievable using CLI parameters:",
-  commentImage:
-    "https://snyk.aha.io/attachments/7343250026469379711/token/872463676fd92f298a6544d16e2f385c463d98377175a95449ccc04851b1727e.download?size=original",
+  commentRaw: `<div class='user-content'><p><a href="https://snyk.aha.io/users/7247123586814665774" data-mce-href="https://snyk.aha.io/users/7247123586814665774" data-linked-element-type="User">@Phil Wise</a> the reason I was asking is because the only CN (which was promited to this feature) is <a href="https://snyk.aha.io/ideas/ideas/CN-I-9719?reference-class=Ideas%3A%3AIdea" data-mce-href="https://snyk.aha.io/ideas/ideas/CN-I-9719?reference-class=Ideas%3A%3AIdea" data-linked-element-type="Ideas::Idea" data-visible-fields="icon,ref"><i class="fa-solid fa-lightbulb aha-reference-icon"></i> CN-I-9719</a>, and it is labelled JS to UCT. It may be clearer to define the JS to UCT epic and the features within (if that is even possible?)</p></div>`,
   commenterSlackProfileImageURL:
     "https://avatars.slack-edge.com/2023-04-20/5144360817730_4a286c0e124cfa6e2e8d_24.jpg",
   commenterSlackRealName: "Tyler Fridley",
@@ -23,10 +23,12 @@ const inputData = {
   featureReleaseName: "2024 Priority",
 };
 
+let _comment = mrkdwn(inputData.commentRaw);
+
 // JSON payload
 let _payload = {
   channel: inputData.slackChannel,
-  text: `<@${inputData.commenterSlackID}> commented on Feature <${inputData.featureURL}|${inputData.featureReferenceNum}>`,
+  text: `<@${inputData["commenterSlackID"]}> commented on Feature <${inputData.featureURL}|${inputData.featureReferenceNum}>`,
   blocks: [
     {
       type: "section",
@@ -88,7 +90,7 @@ let _payload = {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: inputData.commentMrkdwn,
+            text: _comment.text,
           },
         },
         {
@@ -119,14 +121,12 @@ let _payload = {
 };
 
 // insert image if present
-if (!!inputData.commentImage) {
+if (!!_comment.image) {
   _payload.attachments[0].blocks.splice(1, 0, {
     type: "image",
-    image_url: inputData.commentImage,
+    image_url: _comment.image,
     alt_text: "First image in comment",
   });
 }
 
-output = { payload: JSON.stringify(_payload) };
-
-console.log(JSON.stringify(_payload, null, 2));
+export default { payload: JSON.stringify(_payload) };
