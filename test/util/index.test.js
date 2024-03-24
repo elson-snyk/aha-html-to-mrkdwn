@@ -1,4 +1,4 @@
-import { mrkdwn } from "./convert";
+import { mrkdwn } from "#root/src/util/convert.js";
 
 // empty strings
 test("empty html string should be empty mrkdwn string", () => {
