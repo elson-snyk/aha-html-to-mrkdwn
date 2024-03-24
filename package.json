@@ -9,7 +9,9 @@
   },
   "scripts": {
     "test": "jest",
-    "build": "rollup --config"
+    "build": "npm run build-idea && npm run build-feature",
+    "build-idea": "rollup -c config/rollup.config.idea.mjs",
+    "build-feature": "rollup -c config/rollup.config.feature.mjs"
   },
   "author": "",
   "license": "ISC",
