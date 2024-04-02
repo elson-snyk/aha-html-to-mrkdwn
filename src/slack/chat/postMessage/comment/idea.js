@@ -68,7 +68,7 @@ export function getPayload(data) {
             type: "section",
             text: {
               type: "mrkdwn",
-              text: data.commentMrkdwn,
+              text: comment.text,
             },
           },
           {
@@ -99,10 +99,10 @@ export function getPayload(data) {
   };
 
   // insert image if present
-  if (!!data.commentImage) {
+  if (!!comment.image) {
     _payload.attachments[0].blocks.splice(1, 0, {
       type: "image",
-      image_url: data.commentImage,
+      image_url: comment.image,
       alt_text: "First image in comment",
     });
   }
