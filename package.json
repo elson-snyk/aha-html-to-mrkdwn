@@ -3,12 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
+  "imports": {
+    "#root/*.js": "./*.js"
+  },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "npm run build-idea && npm run build-feature",
+    "build-idea": "rollup -c config/rollup.config.idea.mjs",
+    "build-feature": "rollup -c config/rollup.config.feature.mjs"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^29.7.0"
+    "@babel/plugin-transform-modules-commonjs": "^7.24.1",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "jest": "^29.7.0",
+    "rollup": "^4.13.0"
   }
 }

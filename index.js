@@ -1,4 +1,4 @@
-const convert = require("./convert");
+import { mrkdwn } from "./src/util/convert";
 
 let examples = [
   // 0
@@ -26,4 +26,4 @@ let examples = [
 // console.log(convert.mrkdwn(html1));
 // console.log(convert.mrkdwn(html2));
 // console.log(convert.mrkdwn(html3));
-console.log(convert.mrkdwn(examples[6]));
+console.log(mrkdwn(examples[6]));
