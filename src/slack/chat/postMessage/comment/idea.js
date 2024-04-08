@@ -1,28 +1,28 @@
-import { mrkdwn } from "#root/src/util/convert.js";
+import { convert } from '#root/src/util/convert.js';
 
 export function getPayload(data) {
   // get mrkdwn and first image
-  let comment = mrkdwn(data["commentRaw"]);
+  let comment = convert(data['commentRaw']);
   // JSON payload
   let _payload = {
     channel: data.slackChannel,
     text: `<@${data.commenterSlackID}> commented on Idea <${data.ideaURL}|${data.ideaReferenceNum}>`,
     blocks: [
       {
-        type: "section",
+        type: 'section',
         text: {
-          type: "mrkdwn",
+          type: 'mrkdwn',
           text: `${data.emoji} <@${data.commenterSlackID}> commented on Idea <${data.ideaURL}|${data.ideaReferenceNum}>`,
         },
       },
       {
-        type: "rich_text",
+        type: 'rich_text',
         elements: [
           {
-            type: "rich_text_section",
+            type: 'rich_text_section',
             elements: [
               {
-                type: "text",
+                type: 'text',
                 text: data.ideaName,
                 style: {
                   bold: true,
@@ -33,31 +33,31 @@ export function getPayload(data) {
         ],
       },
       {
-        type: "section",
+        type: 'section',
         fields: [
           {
-            type: "mrkdwn",
+            type: 'mrkdwn',
             text: `*Status:*\n${data.ideaWorkflowStatusName}`,
           },
           {
-            type: "mrkdwn",
+            type: 'mrkdwn',
             text: `*Votes:*\n${data.ideaVotes}`,
           },
           {
-            type: "mrkdwn",
+            type: 'mrkdwn',
             text: `*Created by:*\n${data.creatorSlackID}`,
           },
           {
-            type: "mrkdwn",
+            type: 'mrkdwn',
             text: `*Assigned to:*\n${data.assigneeSlackID}`,
           },
         ],
       },
       {
-        type: "section",
+        type: 'section',
         text: {
-          type: "plain_text",
-          text: "\n\n",
+          type: 'plain_text',
+          text: '\n\n',
         },
       },
     ],
@@ -65,30 +65,30 @@ export function getPayload(data) {
       {
         blocks: [
           {
-            type: "section",
+            type: 'section',
             text: {
-              type: "mrkdwn",
+              type: 'mrkdwn',
               text: comment.text,
             },
           },
           {
-            type: "context",
+            type: 'context',
             elements: [
               {
-                type: "image",
+                type: 'image',
                 image_url: data.commenterSlackProfileImageURL,
                 alt_text: data.commenterSlackRealName,
               },
               {
-                type: "mrkdwn",
+                type: 'mrkdwn',
                 text: data.commenterSlackRealName,
               },
               {
-                type: "mrkdwn",
+                type: 'mrkdwn',
                 text: `<!date^${data.commentUnixTimestamp}^Posted {date_short_pretty} at {time}^https://snyk.aha.io/${data.auditableType}s/${data.auditableID}|Posted ${data.auditCreatedAt}>`,
               },
               {
-                type: "mrkdwn",
+                type: 'mrkdwn',
                 text: `<https://snyk.aha.io/${data.auditableType}s/${data.auditableID}|View Aha! comment>`,
               },
             ],
@@ -101,9 +101,9 @@ export function getPayload(data) {
   // insert image if present
   if (!!comment.image) {
     _payload.attachments[0].blocks.splice(1, 0, {
-      type: "image",
+      type: 'image',
       image_url: comment.image,
-      alt_text: "First image in comment",
+      alt_text: 'First image in comment',
     });
   }
 
